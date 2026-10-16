@@ -1,0 +1,201 @@
+<!DOCTYPE html>
+<html lang="it">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1, viewport-fit=cover">
+<script src="products.js"></script>
+<title>yasshop12 – Catalogo digitale uomo e donna</title>
+<link rel="stylesheet" href="https://fonts.googleapis.com/css2?family=Bricolage+Grotesque:opsz,wght@12..96,500;12..96,700&family=Hanken+Grotesk:wght@400;500;600&display=swap">
+<style>
+:root{--bg:#07080b;--sf:#11141b;--sf2:#181c25;--ink:#f3f5f8;--mut:#8f98a8;--line:#262b36;--ac:#3b6cff;--acl:#8fb0ff;--ok:#5fcf8f;--no:#ef8a8a;
+--head:"Bricolage Grotesque","Helvetica Neue",Arial,sans-serif;--body:"Hanken Grotesk","Helvetica Neue",Arial,sans-serif;
+--sh:0 24px 50px -12px rgba(0,0,0,.8),0 8px 18px rgba(0,0,0,.5);color-scheme:dark;box-sizing:border-box;padding-top:env(safe-area-inset-top,0px);padding-bottom:env(safe-area-inset-bottom,0px)}
+html{scroll-padding-top:calc(env(safe-area-inset-top,0px) + 70px);scroll-behavior:smooth}
+*,*::before,*::after{box-sizing:border-box}
+body{margin:0;background:var(--bg);color:var(--ink);font:400 16px/1.5 var(--body)}
+body::before{content:"";position:fixed;inset:0 0 auto;height:env(safe-area-inset-top,0px);background:var(--bg);z-index:30}
+button,input,textarea{font:inherit;color:inherit}button{cursor:pointer}a{color:inherit}
+:focus-visible{outline:2px solid var(--acl);outline-offset:3px}
+.tb{position:sticky;top:env(safe-area-inset-top,0px);z-index:20;background:rgba(7,8,11,.88);backdrop-filter:blur(12px);border-bottom:1px solid var(--line)}
+.tb>div{max-width:1240px;margin:0 auto;padding:12px 20px;display:flex;gap:14px;align-items:center}
+.logo{font:700 22px var(--head);letter-spacing:-.03em;background:linear-gradient(180deg,#fff,#97a0b2);-webkit-background-clip:text;background-clip:text;color:transparent;text-decoration:none}
+.tb>div>.logo{margin-right:auto}.tb>div[hidden]{display:none}
+.lb{width:42px;height:42px;border-radius:50%;border:1px solid #2e3544;background:linear-gradient(180deg,#1f2430,#12151c);display:grid;place-items:center;box-shadow:0 8px 18px -6px #000;color:var(--ink)}
+.lb:hover,.lb[aria-expanded="true"]{border-color:var(--acl);color:var(--acl)}
+.sp .si{flex:1;padding:12px 18px;border:1px solid #2e3544;border-radius:999px;background:var(--sf2)}
+.tb a.l{color:var(--mut);text-decoration:none;font-size:15px}
+.hero{position:relative;min-height:calc(100vh - 62px);min-height:calc(100svh - 62px);overflow:hidden;display:flex;flex-direction:column;align-items:center;padding:0 20px 40px;background:radial-gradient(ellipse 70% 50% at 50% 0,#1c2a55 0,transparent 70%),radial-gradient(ellipse 60% 40% at 50% 100%,#161a24 0,transparent 70%),var(--bg)}
+h1{font:700 clamp(34px,6.5vw,76px)/1.02 var(--head);letter-spacing:-.04em;text-align:center;margin:clamp(24px,6vh,60px) 0 10px;background:linear-gradient(180deg,#fff 20%,#8a93a5);-webkit-background-clip:text;background-clip:text;color:transparent}
+.sub{color:var(--mut);margin:0 0 26px;text-align:center;font-size:18px}
+.lens{position:relative;width:min(560px,100%)}
+.lens .si{width:100%;padding:18px 24px 18px 58px;border-radius:999px;border:1px solid #2e3544;background:linear-gradient(180deg,#1a1f2b,#10131a);font-size:17px;box-shadow:var(--sh),inset 0 1px 0 rgba(255,255,255,.06)}
+.lens .si::placeholder{color:#6f788a}
+.lens svg{position:absolute;left:22px;top:50%;transform:translateY(-50%);width:22px;height:22px;stroke:var(--acl);fill:none;stroke-width:2.2;stroke-linecap:round}
+.fan{position:relative;flex:1;width:100%;max-width:980px;min-height:260px;margin-top:30px;display:flex;justify-content:center;align-items:center}
+.fc{position:absolute;width:clamp(120px,19vw,210px);aspect-ratio:4/5;border-radius:18px;border:1px solid #2c3342;overflow:hidden;box-shadow:var(--sh);background:var(--sf);transition:transform .35s cubic-bezier(.2,.8,.2,1),box-shadow .35s;animation:rise .9s cubic-bezier(.2,.8,.2,1) backwards}
+.fc img{width:100%;height:100%;object-fit:cover;display:block}
+.fc:hover{transform:translateY(-14px) rotate(0) scale(1.05)!important;z-index:9;box-shadow:0 34px 60px -10px rgba(59,108,255,.35),var(--sh)}
+@keyframes rise{from{opacity:0;transform:translateY(60px)}}
+.cta,.btn{display:inline-block;text-align:center;padding:16px 38px;border-radius:999px;border:0;background:linear-gradient(180deg,#5b86ff,#2d58e8);color:#fff;font:600 17px var(--body);text-decoration:none;box-shadow:0 14px 34px -6px rgba(59,108,255,.7),inset 0 1px 0 rgba(255,255,255,.3);transition:transform .2s}
+.cta:hover,.btn:hover{transform:translateY(-2px)}
+.btn.g{background:var(--sf2);box-shadow:none;border:1px solid var(--line)}
+.hero2{position:relative;min-height:calc(100vh - 62px);min-height:calc(100svh - 62px);display:flex;flex-direction:column;align-items:center;text-align:center;overflow:hidden;padding:clamp(20px,4vh,48px) 20px 34px;background:radial-gradient(ellipse 65% 50% at 50% 42%,rgba(236,239,246,.26),transparent 70%),radial-gradient(ellipse 40% 30% at 12% 8%,rgba(255,255,255,.1),transparent 60%),radial-gradient(ellipse 45% 35% at 90% 85%,rgba(190,196,208,.16),transparent 65%),linear-gradient(165deg,#09090b 0%,#24272d 38%,#101216 62%,#3b3f48 100%)}
+.hero2 h1{font-size:clamp(46px,9vw,112px);margin:0 0 4px}
+.hero2 .sub{font-size:clamp(16px,2.4vw,22px);letter-spacing:.02em;color:#b9c0cd;margin:0}
+.hero2{height:calc(100svh - 67px - env(safe-area-inset-top,0px) - env(safe-area-inset-bottom,0px));min-height:520px;padding-bottom:20px}
+.hero2 .cta{margin-top:22px}.hero2.has-img{justify-content:flex-start;padding-top:clamp(110px,27vh,300px);background-size:cover;background-position:center}
+.hero2.has-img .cta{background:linear-gradient(180deg,#fff,#dfe3ea);color:#0b0c10;box-shadow:0 14px 34px -8px rgba(0,0,0,.75),inset 0 1px 0 #fff}
+.hero2.has-img .cta:hover{background:#fff}.has-img .scene{display:none}.home footer{display:none}
+.scene{flex:1;width:100%;max-width:1100px;min-height:0;margin:14px 0 0;display:flex}
+.scene svg{width:100%;height:100%}.scene .photo{width:100%;height:100%;object-fit:cover;border-radius:24px;box-shadow:var(--sh)}
+.wrap{max-width:1240px;margin:0 auto;padding:40px 20px 60px}
+.sec{font:700 clamp(28px,4vw,40px) var(--head);letter-spacing:-.03em;margin:0 0 20px}
+.tiles{display:grid;grid-template-columns:repeat(auto-fill,minmax(250px,1fr));gap:20px}
+.tile{position:relative;aspect-ratio:4/3;border-radius:20px;overflow:hidden;box-shadow:var(--sh);border:1px solid #2c3342;text-decoration:none;transition:transform .3s,box-shadow .3s}
+.tile:hover{transform:translateY(-6px);box-shadow:0 30px 50px -12px rgba(59,108,255,.35),var(--sh)}
+.tile img{width:100%;height:100%;object-fit:cover;display:block}
+.tile span{position:absolute;inset:auto 0 0;padding:44px 18px 16px;background:linear-gradient(transparent,rgba(0,0,0,.85))}
+.tile b{display:block;font:700 24px var(--head);letter-spacing:-.02em}.tile small{color:#c4cad6}
+.crumb{display:inline-block;color:var(--mut);text-decoration:none;margin-bottom:12px}
+.crumb:hover{color:var(--ink)}
+.fl{display:flex;flex-wrap:wrap;gap:8px 22px;margin:14px 0 26px;align-items:center}
+.fg{display:flex;flex-wrap:wrap;gap:6px;align-items:center}.fg>span{color:var(--mut);font-size:14px;margin-right:2px}
+.chip{padding:5px 12px;border:1px solid var(--line);border-radius:999px;background:var(--sf);font-size:14px}
+.chip[aria-pressed="true"]{background:var(--ac);border-color:var(--ac)}
+.sw{width:26px;height:26px;border-radius:50%;border:1px solid #3a4150;padding:0}.sw[aria-pressed="true"]{outline:2px solid var(--acl);outline-offset:2px}
+.dd{position:relative}.dd summary{list-style:none;cursor:pointer}.dd summary::-webkit-details-marker{display:none}
+.chip.on{background:var(--ac);border-color:var(--ac)}
+.ddm{position:absolute;z-index:15;top:calc(100% + 8px);left:0;min-width:190px;max-height:260px;overflow:auto;display:flex;flex-direction:column;gap:6px;padding:12px;background:var(--sf);border:1px solid var(--line);border-radius:14px;box-shadow:var(--sh)}
+.ddm .chip{text-align:left;border-radius:10px}
+.cnt{color:var(--mut);font-size:14px;margin:0 0 16px}
+.grid{display:grid;grid-template-columns:repeat(auto-fill,minmax(220px,1fr));gap:22px}
+.card{text-decoration:none}
+.card .im{aspect-ratio:4/5;border-radius:16px;overflow:hidden;background:var(--sf);position:relative;box-shadow:var(--sh);transition:transform .3s,box-shadow .3s}
+.card:hover .im{transform:translateY(-6px);box-shadow:0 30px 50px -12px rgba(59,108,255,.3),var(--sh)}
+.card img{width:100%;height:100%;object-fit:cover;display:block}
+.tag{position:absolute;left:10px;top:10px;background:#000c;color:var(--no);font-size:12px;font-weight:600;padding:3px 9px;border-radius:999px}
+.card b{display:block;margin-top:12px;font-weight:600}.card small{color:var(--mut)}
+.dot{display:inline-block;width:10px;height:10px;border-radius:50%;margin-right:6px;border:1px solid #fff4}
+.empty{color:var(--mut);padding:30px 0}
+.pd{display:grid;grid-template-columns:1.1fr 1fr;gap:40px}
+.main{aspect-ratio:4/5;border-radius:20px;overflow:hidden;box-shadow:var(--sh);border:1px solid #2c3342}.main img{width:100%;height:100%;object-fit:cover;display:block}
+.th{display:grid;grid-template-columns:repeat(4,1fr);gap:10px;margin-top:12px}
+.th button{padding:0;border:2px solid transparent;border-radius:12px;overflow:hidden;aspect-ratio:1;background:var(--sf);opacity:.7}
+.th button[aria-pressed="true"]{border-color:var(--acl);opacity:1}.th img{width:100%;height:100%;object-fit:cover;display:block}
+.info{display:flex;flex-direction:column;gap:14px}
+.info h1{font:700 clamp(28px,4vw,42px)/1.05 var(--head);letter-spacing:-.03em;margin:0;text-align:left;background:none;color:var(--ink);-webkit-text-fill-color:var(--ink)}
+.price{font:600 28px var(--head)}.ok{color:var(--ok);font-weight:600}.no{color:var(--no);font-weight:600}
+.lab{color:var(--mut);font-size:14px;margin-bottom:6px}
+.panel{background:var(--sf);border:1px solid var(--line);border-radius:16px;padding:18px;display:flex;flex-direction:column;gap:12px;box-shadow:var(--sh)}
+.tgi{width:100%;padding:12px 14px;background:var(--sf2);border:1px solid var(--line);border-radius:12px;font-size:16px}
+.panel textarea{width:100%;min-height:96px;background:var(--sf2);border:1px solid var(--line);border-radius:12px;padding:12px;resize:none}
+.row{display:flex;gap:10px;flex-wrap:wrap}.row .btn{padding:13px 22px;font-size:16px}
+footer{border-top:1px solid var(--line);padding:28px 20px calc(28px + env(safe-area-inset-bottom,0px));text-align:center;color:var(--mut);font-size:14px}
+@media (max-width:820px){.pd{grid-template-columns:1fr;gap:24px}.grid{grid-template-columns:repeat(2,1fr);gap:14px}.tiles{grid-template-columns:repeat(2,1fr);gap:12px}.tile b{font-size:19px}.tb .l{display:none}.fan{min-height:230px}}
+.tile{color:#fff;background:linear-gradient(160deg,#2a2f38,#0d0e12)}
+html.light{--bg:#fff;--sf:#f4f5f7;--sf2:#eceef2;--ink:#0f1115;--mut:#5b6270;--line:#dcdfe5;--acl:#2d58e8;--ok:#1a8a4a;--no:#c0392b;--sh:0 18px 36px -14px rgba(20,24,40,.28),0 6px 14px rgba(20,24,40,.08);color-scheme:light}
+.light .tb{background:rgba(255,255,255,.92)}
+.light .logo{background:linear-gradient(180deg,#15171c,#5b6270);-webkit-background-clip:text;background-clip:text}
+.light .lb{background:#fff;border-color:var(--line);box-shadow:0 4px 12px -4px rgba(20,24,40,.25)}
+.light .main,.light .tile{border-color:var(--line)}
+.light .chip[aria-pressed="true"],.light .chip.on{color:#fff}
+@media (prefers-reduced-motion:reduce){*{animation:none!important;transition:none!important;scroll-behavior:auto!important}}
+</style>
+</head>
+<body>
+<header class="tb"><div><a class="logo" href="#/">yasshop12</a><a class="l" href="#/cataloghi">Cataloghi</a><button class="lb" id="lb" aria-label="Cerca" aria-expanded="false"><svg viewBox="0 0 24 24" width="22" height="22" fill="none" stroke="currentColor" stroke-width="2.2" stroke-linecap="round" aria-hidden="true"><circle cx="11" cy="11" r="7"/><path d="M20 20l-4-4"/></svg></button></div><div class="sp" id="sp" hidden><input class="si" data-s type="search" placeholder="Cerca un capo o una marca" aria-label="Cerca nel catalogo" enterkeyhint="search"></div></header>
+<main id="app"></main>
+<footer>yasshop12 · Il sito è un catalogo: per ordinare o chiedere disponibilità scrivici su Instagram.</footer>
+<script>
+// ====== DA MODIFICARE ======
+const IG="https://instagram.com/yasshop12",WA=""; // WA: numero WhatsApp con prefisso, es. "393331234567" (vuoto = nascosto)
+const CATS=["Giacche","Giacche leggere","Felpe","Maglioni","T-shirt","Jeans","Pantaloni","Scarpe","Tacchi","Borse","Accessori","Elettronica"];
+const P=(window.PRODUCTS||[]).map((p,i)=>({id:i,p:0,s:[],c:[],a:null,...p}));
+// ===========================
+const SW={Nero:"#1a1a1a",Bianco:"#f4f4f0",Blu:"#2f4a8a",Azzurro:"#6fb3e0",Arancione:"#e0782b",Beige:"#cdb99a",Grigio:"#8b8d91",Verde:"#3d5a45",Rosso:"#a63a3a",Marrone:"#6b4a33"};
+const AL={Giacche:"giacca giacche giacchetta giubbino giubbini giubbotto giubbotti cappotto trench bomber piumino parka blazer",Jeans:"jeans denim",Pantaloni:"pantalone pantaloni pants",["T-shirt"]:"tshirt t-shirt maglia maglie maglietta magliette polo",Scarpe:"scarpa scarpe sneakers stivali stivaletti calzature",Borse:"borsa borse zaino bag",Accessori:"accessorio accessori cintura","Giacche leggere":"giacca giacche vento impermeabile antivento giubbino leggero",Felpe:"felpa felpe hoodie cappuccio",Maglioni:"maglione maglioni cardigan dolcevita pullover lana",Tacchi:"tacco tacchi decollete sandali scarpe",Elettronica:"cuffie smartwatch caricatore tech elettronica"};
+const $=id=>document.getElementById(id),enc=encodeURIComponent,app=$("app");
+const norm=s=>s.toLowerCase().normalize("NFD").replace(/[\u0300-\u036f]/g,"");
+const hit=(p,q)=>{const h=norm([p.n,p.b,p.t,p.g,p.c.join(" "),AL[p.t]].join(" "));return norm(q).split(/\s+/).filter(w=>w.length>2).every(w=>h.includes(w)||h.includes(w.slice(0,-1)))};
+const eur=n=>"€ "+n.toLocaleString("it-IT"),VIEW=["Fronte","Retro","Dettaglio","Tessuto"];
+const ph=(p,v=0)=>{const c=SW[p.c[0]]||"#555";return"data:image/svg+xml;charset=utf-8,"+enc(`<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 400 500"><defs><linearGradient id="g" gradientTransform="rotate(${40+v*50} .5 .5)"><stop offset="0" stop-color="${c}"/><stop offset="1" stop-color="#07080b"/></linearGradient></defs><rect width="400" height="500" fill="url(#g)"/><text x="200" y="258" text-anchor="middle" font-family="Arial" font-size="24" fill="#fff" fill-opacity=".85">${p.t}</text><text x="200" y="292" text-anchor="middle" font-family="Arial" font-size="14" fill="#fff" fill-opacity=".55">${VIEW[v]} · foto in arrivo</text></svg>`)};
+const img=(p,v=0)=>(p.imgs&&p.imgs[v])||ph(p,v);
+let F={},SEL={},GI=0,REQ=false,NOTE="",TG="",MK=()=>"",cur=()=>{};
+const card=p=>`<a class="card" href="#/p/${p.id}"><div class="im"><img src="${img(p)}" alt="${p.n}" loading="lazy">${p.a===false?'<span class="tag">Non disponibile</span>':""}</div><b>${p.n}</b><small>${p.b}</small></a>`;
+const chip=(k,v,on,l)=>`<button class="chip" data-f="${k}" data-v="${v}" aria-pressed="${on}">${l||v}</button>`;
+function lens(){return`<div class="lens"><svg viewBox="0 0 24 24" aria-hidden="true"><circle cx="11" cy="11" r="7"/><path d="M20 20l-4-4"/></svg><input class="si" data-s type="search" placeholder="Cerca un capo, una marca…" aria-label="Cerca nel catalogo" enterkeyhint="search"></div>`}
+const TILE={Giacche:"images/tile-giacche.jpg"}; // foto dei riquadri dei cataloghi (nome catalogo: immagine)
+const tiles=()=>`<div class="tiles">${CATS.map(c=>{const L=P.filter(p=>p.t===c);return`<a class="tile" href="#/cat/${enc(c)}">${TILE[c]||L[0]?`<img src="${TILE[c]||img(L[0])}" alt="" loading="lazy">`:""}<span><b>${c}</b><small>${L.length?L.length+(L.length===1?" modello":" modelli")+" · Vedi tutto":"In arrivo"}</small></span></a>`}).join("")}</div>`;
+function home(){
+ const FAN=[3,7,0,14,16],ROT=[-14,-7,0,7,14],X=[-2,-1,0,1,2],Y=[22,6,-6,6,22];
+ app.innerHTML=`<section class="hero"><h1>Catalogo digitale<br>uomo e donna</h1><p class="sub">Capi firmati, selezionati per te.</p>${lens()}<div class="fan">${FAN.map((id,i)=>`<a class="fc" href="#/p/${id}" style="transform:translateX(calc(${X[i]}*min(17vw,185px))) translateY(${Y[i]}px) rotate(${ROT[i]}deg);z-index:${5-Math.abs(X[i])};animation-delay:${.15+i*.09}s" aria-label="${P[id].n}"><img src="${img(P[id])}" alt="${P[id].n}"></a>`).join("")}</div><button class="cta" data-scroll>Sfoglia il catalogo</button></section><section class="wrap" id="cataloghi"><h2 class="sec">I nostri cataloghi</h2>${tiles()}</section>`;
+ document.title="yasshop12 – Catalogo digitale uomo e donna"}
+const HERO_IMG="images/hero.jpg"; // quando hai la foto dei manichini, scrivi qui il suo indirizzo (vuoto = immagine provvisoria)
+const MQ=[
+{x:130,g:"m",t:"#e9ebef",sl:"#1b1d22",bo:"#2f4a8a",co:"#1b1d22",cl:300,sh:"#f4f4f0"},
+{x:320,g:"f",t:"#1a1a1a",sl:"#cdb99a",bo:"#1a1a1a",co:"#cdb99a",cl:390,sh:"#1a1a1a"},
+{x:510,g:"m",t:"#8b8d91",sl:"#8b8d91",bo:"#3d5a45",sh:"#f4f4f0"},
+{x:700,g:"f",dr:"#e0782b",sh:"#1a1a1a"},
+{x:890,g:"m",t:"#c9d3e8",sl:"#22304f",bo:"#6b6f78",co:"#22304f",cl:330,sh:"#1a1a1a"},
+{x:1080,g:"f",t:"#f4f4f0",sl:"#f4f4f0",bo:"#6fb3e0",sh:"#f4f4f0"}];
+function mq(o){const S="#c9ccd3",P=[],a=(d,f)=>P.push([d,f]);
+ if(!o.dr){a("M-37 248h36l-6 222h-24z",o.bo);a("M37 248h-36l6 222h24z",o.bo)}else{a("M-26 380h20l-4 90h-14z",S);a("M26 380h-20l4 90h14z",S)}
+ a("M-33 470h28v14h-34z",o.sh);a("M33 470h-28v14h34z",o.sh);
+ if(o.dr){a("M-38 118l24-10h28l24 10 2 70-8 14 46 178h-140l46-178-8-14z",o.dr);a("M-46 118l-12 100 14 2 10-90z",S);a("M46 118l12 100-14 2-10-90z",S)}
+ else{a("M-46 118l30-12h32l30 12 4 70-8 62h-84l-8-62z",o.t);a("M-46 118l-16 4-14 98 16 2 14-84z",o.sl);a("M46 118l16 4 14 98-16 2-14-84z",o.sl);a("M-78 220l16 2-1 24-14-2z",S);a("M78 220l-16 2 1 24 14-2z",S)}
+ if(o.co){a(`M-50 116l34-12h32l34 12 6 ${o.cl-116}h-112z`,o.co);a(`M-4 104h8v${o.cl-104}h-8z`,"rgba(0,0,0,.35)")}
+ a("M-8 92h16v20h-16z",S);a("M-20 70a20 26 0 1 0 40 0a20 26 0 1 0-40 0z",S);a("M-48 520a48 10 0 1 0 96 0a48 10 0 1 0-96 0z","#15171b");
+ const k=o.g==="f"&&!o.dr?.88:1;
+ return`<g transform="translate(${o.x} 0) scale(${k} 1)" filter="url(#ds)">${P.map(p=>`<path d="${p[0]}" fill="${p[1]}"/>`).join("")}<clipPath id="c${o.x}">${P.slice(0,-1).map(p=>`<path d="${p[0]}"/>`).join("")}</clipPath><rect x="-100" y="0" width="200" height="540" fill="url(#sh)" clip-path="url(#c${o.x})"/></g>`}
+function home2(){
+ const sc=HERO_IMG?"":`<svg viewBox="0 0 1210 560" preserveAspectRatio="xMidYMax meet" role="img" aria-label="Manichini con abiti del catalogo (immagine provvisoria)"><defs><linearGradient id="sh" x1="0" x2="1"><stop offset="0" stop-color="#fff" stop-opacity=".3"/><stop offset=".45" stop-color="#fff" stop-opacity="0"/><stop offset="1" stop-color="#000" stop-opacity=".55"/></linearGradient><linearGradient id="sp" x1="0" y1="0" x2="0" y2="1"><stop offset="0" stop-color="#fff" stop-opacity=".2"/><stop offset="1" stop-color="#fff" stop-opacity="0"/></linearGradient><radialGradient id="fl"><stop offset="0" stop-color="#fff" stop-opacity=".22"/><stop offset="1" stop-color="#fff" stop-opacity="0"/></radialGradient><filter id="ds" x="-30%" y="-10%" width="160%" height="130%"><feDropShadow dx="10" dy="12" stdDeviation="9" flood-opacity=".55"/></filter></defs><polygon points="540,0 670,0 1150,545 60,545" fill="url(#sp)"/><ellipse cx="605" cy="528" rx="620" ry="36" fill="url(#fl)"/>${MQ.map(mq).join("")}</svg>`;
+ app.innerHTML=`<section class="hero2${HERO_IMG?" has-img":""}"${HERO_IMG?` style="background-image:radial-gradient(ellipse at center,rgba(5,6,8,.76) 0,rgba(5,6,8,.42) 55%,rgba(5,6,8,.66) 100%),url(${HERO_IMG})"`:""}><h1>Catalogo</h1><p class="sub">Vestiario, uomo e donna</p><a class="cta" href="#/cataloghi">Sfoglia il catalogo</a><div class="scene">${sc}</div></section>`;
+ document.title="yasshop12 – Catalogo vestiario uomo e donna"}
+function cats(){app.innerHTML=`<section class="wrap"><h2 class="sec">I nostri cataloghi</h2>${tiles()}</section>`;document.title="Cataloghi – yasshop12"}
+const dd=(l,k,L)=>`<details class="dd"><summary class="chip${F[k]?" on":""}">${l}${F[k]?": "+F[k]:""} ▾</summary><div class="ddm">${L.map(v=>chip(k,v,F[k]===v)).join("")}</div></details>`;
+function cat(c){cur=()=>cat(c);
+ const base=P.filter(p=>p.t===c),sz=[...new Set(base.flatMap(p=>p.s))].sort((a,b)=>a.localeCompare(b,"it",{numeric:true})),O=["XS","S","M","L","XL"];
+ sz.sort((a,b)=>(O.indexOf(a)<0?99:O.indexOf(a))-(O.indexOf(b)<0?99:O.indexOf(b)));
+ const L=base.filter(p=>(!F.g||p.g===F.g)&&(!F.m||p.b===F.m)&&(!F.c||p.c.includes(F.c))&&(!F.s||p.s.includes(F.s))&&(!F.a||p.a));
+ app.innerHTML=`<section class="wrap"><a class="crumb" href="#/cataloghi">← Tutti i cataloghi</a><h2 class="sec">${c}</h2>
+ <div class="fl">${dd("Genere","g",[...new Set(base.map(p=>p.g))])}
+ ${dd("Marca","m",[...new Set(base.map(p=>p.b))])}
+ 
+ 
+ </div>
+ <p class="cnt">${L.length} ${L.length===1?"modello":"modelli"}</p>${L.length?`<div class="grid">${L.map(card).join("")}</div>`:'<p class="empty">Nessun modello con questi filtri. Prova a toglierne qualcuno.</p>'}</section>`;
+ document.title=c+" – yasshop12"}
+function search(q){cur=()=>search(q);const L=P.filter(p=>hit(p,q));
+ app.innerHTML=`<section class="wrap"><a class="crumb" href="#/cataloghi">← Tutti i cataloghi</a><h2 class="sec">Risultati per “${q.replace(/</g,"&lt;")}”</h2><p class="cnt">${L.length} ${L.length===1?"modello":"modelli"}</p>${L.length?`<div class="grid">${L.map(card).join("")}</div>`:'<p class="empty">Nessun risultato. Prova con “giacche”, “jeans” o il nome di una marca.</p>'}</section>`;
+ document.title="Cerca – yasshop12"}
+function prod(id){const p=P[id];if(!p)return cats();cur=()=>prod(id);
+ MK=()=>`Ciao! Vorrei sapere se è disponibile: ${p.n} (${p.b}), taglia ${(p.s.length?SEL.s:TG.trim())||"da indicare"}. Grazie!`;const msg=MK();
+ const more=P.filter(x=>x.t===p.t&&x.id!==p.id).slice(0,4);
+ app.innerHTML=`<section class="wrap"><a class="crumb" href="#/cat/${enc(p.t)}">← ${p.t}</a><div class="pd"><div><div class="main"><img src="${img(p,GI)}" alt="${p.n} – ${VIEW[GI]}"></div><div class="th">${Array.from({length:p.imgs?p.imgs.length:4},(_,i)=>`<button data-gi="${i}" aria-pressed="${GI===i}" aria-label="Foto ${i+1}"><img src="${img(p,i)}" alt=""></button>`).join("")}</div></div>
+ <div class="info"><div class="lab">${p.b}${p.g&&p.g!=="Unisex"?" · "+p.g:""}</div><h1>${p.n}</h1>${p.a===null?"":`<div class="${p.a?"ok":"no"}">${p.a?"Disponibile":"Al momento non disponibile"}</div>`}${p.d?`<p style="margin:0;color:var(--mut)">${p.d}</p>`:""}
+ ${p.s.length?`<div><div class="lab">Taglia</div><div class="fg">${p.s.map(s=>`<button class="chip" data-sel="s" data-v="${s}" aria-pressed="${SEL.s===s}">${s}</button>`).join("")}</div></div>`:""}
+ <button class="btn" data-req>Richiedi taglia e disponibilità</button>
+ ${REQ?`<div class="panel">${p.s.length?"":`<label class="lab" for="tg" style="margin:0">Che taglia ti serve?</label><input id="tg" class="tgi" value="${TG.replace(/"/g,"&quot;")}" placeholder="Es. S, M, L, XL" autocomplete="off">`}<div class="lab">Questo è il messaggio da inviarci:</div><textarea readonly aria-label="Messaggio">${msg}</textarea><div class="row"><button class="btn" data-copy>Copia e apri Instagram</button>${WA?`<a class="btn g" target="_blank" rel="noopener" href="https://wa.me/${WA}?text=${enc(msg)}">WhatsApp</a>`:""}</div><div class="lab" role="status">${NOTE}</div></div>`:""}</div></div>
+ ${more.length?`<h2 class="sec" style="margin-top:56px;font-size:28px">Altri modelli in ${p.t}</h2><div class="grid">${more.map(card).join("")}</div>`:""}</section>`;
+ document.title=p.n+" – yasshop12"}
+function route(){const [,a,b]=(location.hash.slice(1)||"/").split("/").map(decodeURIComponent);F={};SEL={};GI=0;REQ=false;NOTE="";TG="";cur=()=>{};
+ if(a==="cat"&&CATS.includes(b))cat(b);else if(a==="p")prod(+b);else if(a==="cerca")search(b||"");else if(a==="cataloghi")cats();else home2();document.body.classList.toggle("home",!!document.querySelector(".hero2"));document.documentElement.classList.toggle("light",!document.querySelector(".hero2"));scrollTo(0,0)}
+addEventListener("hashchange",route);
+const go=v=>{v=v.trim();if(v){location.hash="#/cerca/"+enc(v);$("sp").hidden=true;$("lb").setAttribute("aria-expanded","false")}};
+document.addEventListener("keydown",e=>{if(e.key==="Enter"&&e.target.matches("[data-s]")){go(e.target.value);e.target.blur()}});
+document.addEventListener("click",e=>{const t=e.target.closest("[data-f],[data-sel],[data-gi],[data-req],[data-copy],[data-scroll],.lens svg");if(!t)return;
+ if(t.matches(".lens svg"))go(t.parentNode.querySelector("input").value);
+ else if(t.dataset.f){const k=t.dataset.f;F[k]=F[k]===t.dataset.v?"":t.dataset.v;cur()}
+ else if(t.dataset.sel){const k=t.dataset.sel;SEL[k]=SEL[k]===t.dataset.v?"":t.dataset.v;cur()}
+ else if(t.dataset.gi){GI=+t.dataset.gi;cur()}
+ else if(t.hasAttribute("data-req")){REQ=!REQ;cur();const i=$("tg");if(i)i.focus()}
+ else if(t.hasAttribute("data-copy")){const m=document.querySelector(".panel textarea").value;(navigator.clipboard?navigator.clipboard.writeText(m):Promise.reject()).then(()=>NOTE="Messaggio copiato: incollalo nella chat di Instagram.",()=>NOTE="Copia il messaggio qui sopra e incollalo nella chat.").then(()=>cur());window.open(IG,"_blank","noopener")}
+ else if(t.hasAttribute("data-scroll"))$("cataloghi").scrollIntoView()});
+document.addEventListener("click",e=>document.querySelectorAll("details.dd[open]").forEach(d=>{if(!d.contains(e.target))d.open=false}));
+document.addEventListener("click",e=>{if(e.target.closest("#lb")){const o=$("sp").hidden;$("sp").hidden=!o;$("lb").setAttribute("aria-expanded",o);if(o)$("sp").querySelector("input").focus()}});
+document.addEventListener("input",e=>{if(e.target.id==="tg"){TG=e.target.value;const a=document.querySelector(".panel textarea");if(a)a.value=MK()}});
+document.addEventListener("keydown",e=>{if(e.key==="Escape"){$("sp").hidden=true;$("lb").setAttribute("aria-expanded","false")}});
+route();
+</script>
+</body>
+</html>
