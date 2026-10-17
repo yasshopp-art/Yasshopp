@@ -72,14 +72,17 @@ h1{font:700 clamp(34px,6.5vw,76px)/1.02 var(--head);letter-spacing:-.04em;text-a
 .card{text-decoration:none}
 .card .im{aspect-ratio:4/5;border-radius:16px;overflow:hidden;background:var(--sf);position:relative;box-shadow:var(--sh);transition:transform .3s,box-shadow .3s}
 .card:hover .im{transform:translateY(-6px);box-shadow:0 30px 50px -12px rgba(59,108,255,.3),var(--sh)}
-.card img{width:100%;height:100%;object-fit:cover;display:block}.card .im.fit{background:#fff}.card .im.fit img{object-fit:contain}
+.card .im{background:#fff}.card img{width:100%;height:100%;object-fit:contain;display:block}.card .im.fit{background:#fff}.card .im.fit img{object-fit:contain}
 .tag{position:absolute;left:10px;top:10px;background:#000c;color:var(--no);font-size:12px;font-weight:600;padding:3px 9px;border-radius:999px}
 .card b{display:block;margin-top:12px;font-weight:600}.card small{color:var(--mut)}
 .dot{display:inline-block;width:10px;height:10px;border-radius:50%;margin-right:6px;border:1px solid #fff4}
 .empty{color:var(--mut);padding:30px 0}
 .pd{display:grid;grid-template-columns:1.1fr 1fr;gap:40px}
 .main{aspect-ratio:4/5;border-radius:20px;overflow:hidden;box-shadow:var(--sh);border:1px solid #2c3342}.main{background:#fff}.main img{width:100%;height:100%;object-fit:contain;display:block}
-.th{display:grid;grid-template-columns:repeat(4,1fr);gap:10px;margin-top:12px}
+.gal{position:relative}.sl{display:flex;overflow-x:auto;overflow-y:hidden;scroll-snap-type:x mandatory;scrollbar-width:none;-webkit-overflow-scrolling:touch;overscroll-behavior-x:contain}.sl::-webkit-scrollbar{display:none}.sl img{flex:0 0 100%;width:100%;height:100%;scroll-snap-align:center;scroll-snap-stop:always}
+.ar{position:absolute;top:50%;transform:translateY(-50%);width:46px;height:46px;border-radius:50%;border:1px solid rgba(0,0,0,.08);background:rgba(255,255,255,.92);color:#111;font:400 30px/1 var(--body);display:grid;place-items:center;box-shadow:0 6px 16px -6px rgba(0,0,0,.35);z-index:2}.ar.l{left:12px}.ar.r{right:12px}.ar[disabled]{opacity:0;pointer-events:none}
+.gcnt{position:absolute;right:14px;bottom:14px;background:rgba(0,0,0,.62);color:#fff;font-size:13px;font-weight:600;padding:3px 11px;border-radius:999px;z-index:2}
+.th{display:flex;gap:10px;margin-top:12px;overflow-x:auto;scrollbar-width:none;padding:2px}.th::-webkit-scrollbar{display:none}.th button{flex:0 0 calc(25% - 7.5px)}
 .th button{padding:0;border:2px solid transparent;border-radius:12px;overflow:hidden;aspect-ratio:1;background:var(--sf);opacity:.7}
 .th button[aria-pressed="true"]{border-color:var(--acl);opacity:1}.th button{background:#fff}.th img{width:100%;height:100%;object-fit:contain;display:block}
 .info{display:flex;flex-direction:column;gap:14px}
@@ -120,7 +123,7 @@ const hit=(p,q)=>{const h=norm([p.n,p.b,p.t,p.g,p.c.join(" "),AL[p.t]].join(" ")
 const eur=n=>"€ "+n.toLocaleString("it-IT"),VIEW=["Fronte","Retro","Dettaglio","Tessuto"];
 const ph=(p,v=0)=>{const c=SW[p.c[0]]||"#555";return"data:image/svg+xml;charset=utf-8,"+enc(`<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 400 500"><defs><linearGradient id="g" gradientTransform="rotate(${40+v*50} .5 .5)"><stop offset="0" stop-color="${c}"/><stop offset="1" stop-color="#07080b"/></linearGradient></defs><rect width="400" height="500" fill="url(#g)"/><text x="200" y="258" text-anchor="middle" font-family="Arial" font-size="24" fill="#fff" fill-opacity=".85">${p.t}</text><text x="200" y="292" text-anchor="middle" font-family="Arial" font-size="14" fill="#fff" fill-opacity=".55">${VIEW[v]} · foto in arrivo</text></svg>`)};
 const img=(p,v=0)=>(p.imgs&&p.imgs[v])||ph(p,v);
-let F={},SEL={},GI=0,REQ=false,NOTE="",TG="",MK=()=>"",cur=()=>{};
+let NI=0,F={},SEL={},GI=0,REQ=false,NOTE="",TG="",MK=()=>"",cur=()=>{};
 const card=p=>`<a class="card" href="#/p/${p.id}"><div class="im${p.t==="Scarpe"?" fit":""}"><img src="${img(p)}" alt="${p.n}" loading="lazy">${p.a===false?'<span class="tag">Non disponibile</span>':""}</div><b>${p.n}</b><small>${p.b}</small></a>`;
 const chip=(k,v,on,l)=>`<button class="chip" data-f="${k}" data-v="${v}" aria-pressed="${on}">${l||v}</button>`;
 function lens(){return`<div class="lens"><svg viewBox="0 0 24 24" aria-hidden="true"><circle cx="11" cy="11" r="7"/><path d="M20 20l-4-4"/></svg><input class="si" data-s type="search" placeholder="Cerca un capo, una marca…" aria-label="Cerca nel catalogo" enterkeyhint="search"></div>`}
@@ -170,30 +173,35 @@ function search(q){cur=()=>search(q);const L=P.filter(p=>hit(p,q));
  document.title="Cerca – yasshop12"}
 function prod(id){const p=P[id];if(!p)return cats();cur=()=>prod(id);
  MK=()=>`Ciao! Vorrei sapere se è disponibile: ${p.n} (${p.b}), taglia ${(p.s.length?SEL.s:TG.trim())||"da indicare"}. Grazie!`;const msg=MK();
- const more=P.filter(x=>x.t===p.t&&x.id!==p.id).slice(0,4);
- app.innerHTML=`<section class="wrap"><a class="crumb" href="#/cat/${enc(p.t)}">← ${p.t}</a><div class="pd"><div><div class="main"><img src="${img(p,GI)}" alt="${p.n} – ${VIEW[GI]}"></div><div class="th">${Array.from({length:p.imgs?p.imgs.length:4},(_,i)=>`<button data-gi="${i}" aria-pressed="${GI===i}" aria-label="Foto ${i+1}"><img src="${img(p,i)}" alt=""></button>`).join("")}</div></div>
+ const more=P.filter(x=>x.t===p.t&&x.id!==p.id).slice(0,4);NI=p.imgs?p.imgs.length:4;if(GI>=NI)GI=0;
+ app.innerHTML=`<section class="wrap"><a class="crumb" href="#/cat/${enc(p.t)}">← ${p.t}</a><div class="pd"><div><div class="gal"><div class="main sl" id="sl">${Array.from({length:NI},(_,i)=>`<img src="${img(p,i)}" alt="${p.n} – foto ${i+1}"${i?' loading="lazy"':""}>`).join("")}</div>${NI>1?`<button class="ar l" data-nav="-1" aria-label="Foto precedente"${GI?"":" disabled"}>‹</button><button class="ar r" data-nav="1" aria-label="Foto successiva"${GI<NI-1?"":" disabled"}>›</button><div class="gcnt" id="gcnt">${GI+1} / ${NI}</div>`:""}</div>${NI>1?`<div class="th" id="th">${Array.from({length:NI},(_,i)=>`<button data-gi="${i}" aria-pressed="${GI===i}" aria-label="Foto ${i+1}"><img src="${img(p,i)}" alt="" loading="lazy"></button>`).join("")}</div>`:""}</div>
  <div class="info"><div class="lab">${p.b}${p.g&&p.g!=="Unisex"?" · "+p.g:""}</div><h1>${p.n}</h1>${p.a===null?"":`<div class="${p.a?"ok":"no"}">${p.a?"Disponibile":"Al momento non disponibile"}</div>`}${p.d?`<p style="margin:0;color:var(--mut)">${p.d}</p>`:""}
  ${p.s.length?`<div><div class="lab">Taglia</div><div class="fg">${p.s.map(s=>`<button class="chip" data-sel="s" data-v="${s}" aria-pressed="${SEL.s===s}">${s}</button>`).join("")}</div></div>`:""}
  <button class="btn" data-req>Richiedi taglia e disponibilità</button>
  ${REQ?`<div class="panel">${p.s.length?"":`<label class="lab" for="tg" style="margin:0">Che taglia ti serve?</label><input id="tg" class="tgi" value="${TG.replace(/"/g,"&quot;")}" placeholder="Es. S, M, L, XL" autocomplete="off">`}<div class="lab">Questo è il messaggio da inviarci:</div><textarea readonly aria-label="Messaggio">${msg}</textarea><div class="row"><button class="btn" data-copy>Copia e apri Instagram</button>${WA?`<a class="btn g" target="_blank" rel="noopener" href="https://wa.me/${WA}?text=${enc(msg)}">WhatsApp</a>`:""}</div><div class="lab" role="status">${NOTE}</div></div>`:""}</div></div>
  ${more.length?`<h2 class="sec" style="margin-top:56px;font-size:28px">Altri modelli in ${p.t}</h2><div class="grid">${more.map(card).join("")}</div>`:""}</section>`;
- document.title=p.n+" – yasshop12"}
+ document.title=p.n+" – yasshop12";galInit()}
+function galSync(){const c=$("gcnt");if(c)c.textContent=(GI+1)+" / "+NI;document.querySelectorAll("[data-nav]").forEach(b=>b.disabled=+b.dataset.nav<0?GI===0:GI===NI-1);const th=$("th");if(th)th.querySelectorAll("button").forEach((b,i)=>{b.setAttribute("aria-pressed",i===GI);if(i===GI)th.scrollTo({left:b.offsetLeft-th.clientWidth/2+b.clientWidth/2,behavior:"smooth"})})}
+function galGo(i,sm=true){const sl=$("sl");if(!sl)return;GI=Math.max(0,Math.min(NI-1,i));sl.scrollTo({left:GI*sl.clientWidth,behavior:sm?"smooth":"auto"});galSync()}
+function galInit(){const sl=$("sl");if(!sl)return;sl.scrollLeft=GI*sl.clientWidth;let t;sl.addEventListener("scroll",()=>{clearTimeout(t);t=setTimeout(()=>{const i=Math.round(sl.scrollLeft/sl.clientWidth);if(i!==GI){GI=i;galSync()}},60)},{passive:true})}
 function route(){const [,a,b]=(location.hash.slice(1)||"/").split("/").map(decodeURIComponent);F={};SEL={};GI=0;REQ=false;NOTE="";TG="";cur=()=>{};
  if(a==="cat"&&CATS.includes(b))cat(b);else if(a==="p")prod(+b);else if(a==="cerca")search(b||"");else if(a==="cataloghi")cats();else home2();document.body.classList.toggle("home",!!document.querySelector(".hero2"));document.documentElement.classList.toggle("light",!document.querySelector(".hero2"));scrollTo(0,0)}
 addEventListener("hashchange",route);
 const go=v=>{v=v.trim();if(v){location.hash="#/cerca/"+enc(v);$("sp").hidden=true;$("lb").setAttribute("aria-expanded","false")}};
 document.addEventListener("keydown",e=>{if(e.key==="Enter"&&e.target.matches("[data-s]")){go(e.target.value);e.target.blur()}});
-document.addEventListener("click",e=>{const t=e.target.closest("[data-f],[data-sel],[data-gi],[data-req],[data-copy],[data-scroll],.lens svg");if(!t)return;
+document.addEventListener("click",e=>{const t=e.target.closest("[data-f],[data-sel],[data-gi],[data-nav],[data-req],[data-copy],[data-scroll],.lens svg");if(!t)return;
  if(t.matches(".lens svg"))go(t.parentNode.querySelector("input").value);
  else if(t.dataset.f){const k=t.dataset.f;F[k]=F[k]===t.dataset.v?"":t.dataset.v;cur()}
  else if(t.dataset.sel){const k=t.dataset.sel;SEL[k]=SEL[k]===t.dataset.v?"":t.dataset.v;cur()}
- else if(t.dataset.gi){GI=+t.dataset.gi;cur()}
+ else if(t.dataset.gi){galGo(+t.dataset.gi)}
+ else if(t.dataset.nav){galGo(GI+ +t.dataset.nav)}
  else if(t.hasAttribute("data-req")){REQ=!REQ;cur();const i=$("tg");if(i)i.focus()}
  else if(t.hasAttribute("data-copy")){const m=document.querySelector(".panel textarea").value;(navigator.clipboard?navigator.clipboard.writeText(m):Promise.reject()).then(()=>NOTE="Messaggio copiato: incollalo nella chat di Instagram.",()=>NOTE="Copia il messaggio qui sopra e incollalo nella chat.").then(()=>cur());window.open(IG,"_blank","noopener")}
  else if(t.hasAttribute("data-scroll"))$("cataloghi").scrollIntoView()});
 document.addEventListener("click",e=>document.querySelectorAll("details.dd[open]").forEach(d=>{if(!d.contains(e.target))d.open=false}));
 document.addEventListener("click",e=>{if(e.target.closest("#lb")){const o=$("sp").hidden;$("sp").hidden=!o;$("lb").setAttribute("aria-expanded",o);if(o)$("sp").querySelector("input").focus()}});
 document.addEventListener("input",e=>{if(e.target.id==="tg"){TG=e.target.value;const a=document.querySelector(".panel textarea");if(a)a.value=MK()}});
+document.addEventListener("keydown",e=>{if($("sl")&&!e.target.matches("input,textarea")&&(e.key==="ArrowRight"||e.key==="ArrowLeft"))galGo(GI+(e.key==="ArrowRight"?1:-1))});
 document.addEventListener("keydown",e=>{if(e.key==="Escape"){$("sp").hidden=true;$("lb").setAttribute("aria-expanded","false")}});
 route();
 </script>
