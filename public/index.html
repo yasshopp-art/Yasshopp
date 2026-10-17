@@ -5,7 +5,7 @@
 <meta name="viewport" content="width=device-width, initial-scale=1, viewport-fit=cover">
 <script src="products.js"></script>
 <title>yasshop12 – Catalogo digitale uomo e donna</title>
-<link rel="stylesheet" href="https://fonts.googleapis.com/css2?family=Bricolage+Grotesque:opsz,wght@12..96,500;12..96,700&family=Hanken+Grotesk:wght@400;500;600&display=swap">
+<link rel="stylesheet" href="https://fonts.googleapis.com/css2?family=Unbounded:wght@800&family=Bricolage+Grotesque:opsz,wght@12..96,500;12..96,700&family=Hanken+Grotesk:wght@400;500;600&display=swap">
 <style>
 :root{--bg:#07080b;--sf:#11141b;--sf2:#181c25;--ink:#f3f5f8;--mut:#8f98a8;--line:#262b36;--ac:#3b6cff;--acl:#8fb0ff;--ok:#5fcf8f;--no:#ef8a8a;
 --head:"Bricolage Grotesque","Helvetica Neue",Arial,sans-serif;--body:"Hanken Grotesk","Helvetica Neue",Arial,sans-serif;
@@ -18,7 +18,7 @@ button,input,textarea{font:inherit;color:inherit}button{cursor:pointer}a{color:i
 :focus-visible{outline:2px solid var(--acl);outline-offset:3px}
 .tb{position:sticky;top:env(safe-area-inset-top,0px);z-index:20;background:rgba(7,8,11,.88);backdrop-filter:blur(12px);border-bottom:1px solid var(--line)}
 .tb>div{max-width:1240px;margin:0 auto;padding:12px 20px;display:flex;gap:14px;align-items:center}
-.logo{font:700 22px var(--head);letter-spacing:-.03em;background:linear-gradient(180deg,#fff,#97a0b2);-webkit-background-clip:text;background-clip:text;color:transparent;text-decoration:none}
+.logo{font-family:"Unbounded",var(--head);font-weight:800;font-size:23px;letter-spacing:-.02em;line-height:1.15;padding:2px 0 4px;text-decoration:none;color:transparent;-webkit-text-fill-color:transparent;background:linear-gradient(180deg,#6b717d 0%,#2a2d33 30%,#0a0b0d 48%,#d9dee7 53%,#3b3f47 62%,#121317 82%,#4a4f59 100%);-webkit-background-clip:text;background-clip:text;filter:drop-shadow(0 0 .5px rgba(255,255,255,.95)) drop-shadow(0 -.5px 0 rgba(255,255,255,.55)) drop-shadow(0 1px 0 #2b2e35) drop-shadow(0 2px 0 #1b1d22) drop-shadow(0 3px 0 #0e0f12) drop-shadow(0 0 9px rgba(150,180,255,.45))}
 .tb>div>.logo{margin-right:auto}.tb>div[hidden]{display:none}
 .lb{width:42px;height:42px;border-radius:50%;border:1px solid #2e3544;background:linear-gradient(180deg,#1f2430,#12151c);display:grid;place-items:center;box-shadow:0 8px 18px -6px #000;color:var(--ink)}
 .lb:hover,.lb[aria-expanded="true"]{border-color:var(--acl);color:var(--acl)}
@@ -98,7 +98,7 @@ footer{border-top:1px solid var(--line);padding:28px 20px calc(28px + env(safe-a
 .tile{color:#fff;background:linear-gradient(160deg,#2a2f38,#0d0e12)}
 html.light{--bg:#fff;--sf:#f4f5f7;--sf2:#eceef2;--ink:#0f1115;--mut:#5b6270;--line:#dcdfe5;--acl:#2d58e8;--ok:#1a8a4a;--no:#c0392b;--sh:0 18px 36px -14px rgba(20,24,40,.28),0 6px 14px rgba(20,24,40,.08);color-scheme:light}
 .light .tb{background:rgba(255,255,255,.92)}
-.light .logo{background:linear-gradient(180deg,#15171c,#5b6270);-webkit-background-clip:text;background-clip:text}
+.light .logo{background:linear-gradient(180deg,#6b717d 0%,#2a2d33 30%,#0a0b0d 48%,#cfd5df 53%,#3b3f47 62%,#121317 82%,#4a4f59 100%);-webkit-background-clip:text;background-clip:text;filter:drop-shadow(0 0 .4px rgba(0,0,0,.9)) drop-shadow(0 -.6px 0 rgba(255,255,255,.9)) drop-shadow(0 1px 0 #7d8390) drop-shadow(0 2px 0 #5a5f6a) drop-shadow(0 3px 0 #3c4048) drop-shadow(0 6px 7px rgba(0,0,0,.3))}
 .light .lb{background:#fff;border-color:var(--line);box-shadow:0 4px 12px -4px rgba(20,24,40,.25)}
 .light .main,.light .tile{border-color:var(--line)}
 .light .chip[aria-pressed="true"],.light .chip.on{color:#fff}
