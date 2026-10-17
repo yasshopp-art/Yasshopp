@@ -527,5 +527,6 @@ window.PRODUCTS=[
 {"n": "Air Jordan 1 High x Travis Scott", "b": "Jordan x Travis Scott", "g": "Unisex", "t": "Scarpe", "d": "Colorway Mocha: bianco, marrone e nero con swoosh al contrario.", "imgs": ["images/sc-ts-05-1.jpg", "images/sc-ts-05-2.jpg", "images/sc-ts-05-3.jpg"]},
 {"n": "Air Jordan 4 x Travis Scott", "b": "Jordan x Travis Scott", "g": "Unisex", "t": "Scarpe", "d": "Colorway Cactus Jack: azzurro con dettagli rossi.", "imgs": ["images/sc-ts-06-1.jpg", "images/sc-ts-06-2.jpg", "images/sc-ts-06-3.jpg", "images/sc-ts-06-4.jpg"]},
 {"n": "Air Jordan 1 High x Off-White", "b": "Off-White x Jordan", "g": "Unisex", "t": "Scarpe", "d": "Colorway tutto bianco con scritte Off-White.", "imgs": ["images/sc-owj-01-1.jpg", "images/sc-owj-01-2.jpg", "images/sc-owj-01-3.jpg"]},
-{"n": "Air Jordan 1 High x Off-White", "b": "Off-White x Jordan", "g": "Unisex", "t": "Scarpe", "d": "Colorway UNC: bianco e azzurro con scritte Off-White.", "imgs": ["images/sc-owj-02-1.jpg", "images/sc-owj-02-2.jpg", "images/sc-owj-02-3.jpg"]}
+{"n": "Air Jordan 1 High x Off-White", "b": "Off-White x Jordan", "g": "Unisex", "t": "Scarpe", "d": "Colorway UNC: bianco e azzurro con scritte Off-White.", "imgs": ["images/sc-owj-02-1.jpg", "images/sc-owj-02-2.jpg", "images/sc-owj-02-3.jpg"]},
+{"n": "Stivaletti Amiri", "b": "Amiri", "g": "Unisex", "t": "Stivaletti", "d": "Stivaletti invernali in suede grigio chiaro con interno in montone, logo MA e suola alta.", "imgs": ["images/bt-amiri-01-1.jpg", "images/bt-amiri-01-2.jpg", "images/bt-amiri-01-3.jpg", "images/bt-amiri-01-4.jpg"]}
 ];

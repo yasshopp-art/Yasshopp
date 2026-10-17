@@ -112,11 +112,11 @@ html.light{--bg:#fff;--sf:#f4f5f7;--sf2:#eceef2;--ink:#0f1115;--mut:#5b6270;--li
 <script>
 // ====== DA MODIFICARE ======
 const IG="https://instagram.com/yasshop12",WA=""; // WA: numero WhatsApp con prefisso, es. "393331234567" (vuoto = nascosto)
-const CATS=["Giacche","Felpe","Maglioni","T-shirt","Jeans","Pantaloni","Scarpe","Tacchi","Borse","Accessori","Elettronica"];
+const CATS=["Giacche","Felpe","Maglioni","T-shirt","Jeans","Pantaloni","Scarpe","Stivaletti","Tacchi","Borse","Accessori","Elettronica"];
 const P=(window.PRODUCTS||[]).map((p,i)=>({id:i,p:0,s:[],c:[],a:null,...p}));
 // ===========================
 const SW={Nero:"#1a1a1a",Bianco:"#f4f4f0",Blu:"#2f4a8a",Azzurro:"#6fb3e0",Arancione:"#e0782b",Beige:"#cdb99a",Grigio:"#8b8d91",Verde:"#3d5a45",Rosso:"#a63a3a",Marrone:"#6b4a33"};
-const AL={Giacche:"giacca giacche giacchetta giubbino giubbini giubbotto giubbotti cappotto trench bomber piumino parka blazer",Jeans:"jeans denim",Pantaloni:"pantalone pantaloni pants",["T-shirt"]:"tshirt t-shirt maglia maglie maglietta magliette polo",Scarpe:"scarpa scarpe sneakers sneaker stivali stivaletti calzature airmax air max jordan force af1 travis",Borse:"borsa borse zaino bag",Accessori:"accessorio accessori cintura","Giacche leggere":"giacca giacche vento impermeabile antivento giubbino leggero",Felpe:"felpa felpe hoodie cappuccio",Maglioni:"maglione maglioni cardigan dolcevita pullover lana",Tacchi:"tacco tacchi decollete sandali scarpe",Elettronica:"cuffie smartwatch caricatore tech elettronica"};
+const AL={Giacche:"giacca giacche giacchetta giubbino giubbini giubbotto giubbotti cappotto trench bomber piumino parka blazer",Jeans:"jeans denim",Pantaloni:"pantalone pantaloni pants",["T-shirt"]:"tshirt t-shirt maglia maglie maglietta magliette polo",Stivaletti:"stivaletto stivaletti stivale stivali boot boots ugg montone pelliccia invernali",Scarpe:"scarpa scarpe sneakers sneaker stivali stivaletti calzature airmax air max jordan force af1 travis",Borse:"borsa borse zaino bag",Accessori:"accessorio accessori cintura","Giacche leggere":"giacca giacche vento impermeabile antivento giubbino leggero",Felpe:"felpa felpe hoodie cappuccio",Maglioni:"maglione maglioni cardigan dolcevita pullover lana",Tacchi:"tacco tacchi decollete sandali scarpe",Elettronica:"cuffie smartwatch caricatore tech elettronica"};
 const $=id=>document.getElementById(id),enc=encodeURIComponent,app=$("app");
 const norm=s=>s.toLowerCase().normalize("NFD").replace(/[\u0300-\u036f]/g,"");
 const hit=(p,q)=>{const h=norm([p.n,p.b,p.t,p.g,p.c.join(" "),AL[p.t]].join(" "));return norm(q).split(/\s+/).filter(w=>w.length>2).every(w=>h.includes(w)||h.includes(w.slice(0,-1)))};
@@ -124,7 +124,7 @@ const eur=n=>"€ "+n.toLocaleString("it-IT"),VIEW=["Fronte","Retro","Dettaglio"
 const ph=(p,v=0)=>{const c=SW[p.c[0]]||"#555";return"data:image/svg+xml;charset=utf-8,"+enc(`<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 400 500"><defs><linearGradient id="g" gradientTransform="rotate(${40+v*50} .5 .5)"><stop offset="0" stop-color="${c}"/><stop offset="1" stop-color="#07080b"/></linearGradient></defs><rect width="400" height="500" fill="url(#g)"/><text x="200" y="258" text-anchor="middle" font-family="Arial" font-size="24" fill="#fff" fill-opacity=".85">${p.t}</text><text x="200" y="292" text-anchor="middle" font-family="Arial" font-size="14" fill="#fff" fill-opacity=".55">${VIEW[v]} · foto in arrivo</text></svg>`)};
 const img=(p,v=0)=>(p.imgs&&p.imgs[v])||ph(p,v);
 let NI=0,F={},SEL={},GI=0,REQ=false,NOTE="",TG="",MK=()=>"",cur=()=>{};
-const card=p=>`<a class="card" href="#/p/${p.id}"><div class="im${p.t==="Scarpe"?" fit":""}"><img src="${img(p)}" alt="${p.n}" loading="lazy">${p.a===false?'<span class="tag">Non disponibile</span>':""}</div><b>${p.n}</b><small>${p.b}</small></a>`;
+const card=p=>`<a class="card" href="#/p/${p.id}"><div class="im"><img src="${img(p)}" alt="${p.n}" loading="lazy">${p.a===false?'<span class="tag">Non disponibile</span>':""}</div><b>${p.n}</b><small>${p.b}</small></a>`;
 const chip=(k,v,on,l)=>`<button class="chip" data-f="${k}" data-v="${v}" aria-pressed="${on}">${l||v}</button>`;
 function lens(){return`<div class="lens"><svg viewBox="0 0 24 24" aria-hidden="true"><circle cx="11" cy="11" r="7"/><path d="M20 20l-4-4"/></svg><input class="si" data-s type="search" placeholder="Cerca un capo, una marca…" aria-label="Cerca nel catalogo" enterkeyhint="search"></div>`}
 const TILE={Giacche:"images/tile-giacche.jpg"}; // foto dei riquadri dei cataloghi (nome catalogo: immagine)
