@@ -431,5 +431,9 @@ window.PRODUCTS=[
 {"n": "Jeans Burberry", "b": "Burberry", "g": "Unisex", "t": "Jeans", "d": "Jeans chiaro con cavaliere stampato e patch in velluto.", "imgs": ["images/j-bur-03-1.jpg", "images/j-bur-03-2.jpg", "images/j-bur-03-3.jpg", "images/j-bur-03-4.jpg"]},
 {"n": "Jeans Amiri", "b": "Amiri", "g": "Unisex", "t": "Jeans", "d": "Jeans skinny chiaro con strappi e toppe a bandana.", "imgs": ["images/j-am-01-1.jpg"]},
 {"n": "Jeans Amiri", "b": "Amiri", "g": "Unisex", "t": "Jeans", "d": "Jeans nero skinny con fondo arricciato.", "imgs": ["images/j-am-02-1.jpg", "images/j-am-02-2.jpg"]},
-{"n": "Jeans Amiri", "b": "Amiri", "g": "Unisex", "t": "Jeans", "d": "Jeans chiaro con strappi e scritte Amiri Jeans.", "imgs": ["images/j-am-03-1.jpg"]}
+{"n": "Jeans Amiri", "b": "Amiri", "g": "Unisex", "t": "Jeans", "d": "Jeans chiaro con strappi e scritte Amiri Jeans.", "imgs": ["images/j-am-03-1.jpg"]},
+{"n": "Jeans Purple Brand", "b": "Purple Brand", "g": "Unisex", "t": "Jeans", "d": "Jeans svasato azzurro con strappi e fondo sfrangiato.", "imgs": ["images/j-pb2-01-1.jpg", "images/j-pb2-01-2.jpg"]},
+{"n": "Jeans Balenciaga", "b": "Balenciaga", "g": "Unisex", "t": "Jeans", "d": "Jeans largo blu con lavaggio a toppe sbiadite.", "imgs": ["images/j-bal2-01-1.jpg"]},
+{"n": "Jeans Balenciaga", "b": "Balenciaga", "g": "Unisex", "t": "Jeans", "d": "Jeans svasato nero con lavaggio sbiadito e pieghe.", "imgs": ["images/j-bal2-02-1.jpg", "images/j-bal2-02-2.jpg", "images/j-bal2-02-3.jpg", "images/j-bal2-02-4.jpg"]},
+{"n": "Jeans Burberry", "b": "Burberry", "g": "Unisex", "t": "Jeans", "d": "Jeans dritto con lavaggio vintage e toppa a quadri sulla tasca.", "imgs": ["images/j-bur2-01-1.jpg", "images/j-bur2-01-2.jpg"]}
 ];
