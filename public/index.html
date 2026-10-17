@@ -5,7 +5,7 @@
 <meta name="viewport" content="width=device-width, initial-scale=1, viewport-fit=cover">
 <script src="products.js"></script>
 <title>yasshop12 – Catalogo digitale uomo e donna</title>
-<link rel="stylesheet" href="https://fonts.googleapis.com/css2?family=Unbounded:wght@800&family=Bricolage+Grotesque:opsz,wght@12..96,500;12..96,700&family=Hanken+Grotesk:wght@400;500;600&display=swap">
+<link rel="stylesheet" href="https://fonts.googleapis.com/css2?family=Unbounded:wght@800&family=Syne:wght@800&family=Bricolage+Grotesque:opsz,wght@12..96,500;12..96,700&family=Hanken+Grotesk:wght@400;500;600&display=swap">
 <style>
 :root{--bg:#07080b;--sf:#11141b;--sf2:#181c25;--ink:#f3f5f8;--mut:#8f98a8;--line:#262b36;--ac:#3b6cff;--acl:#8fb0ff;--ok:#5fcf8f;--no:#ef8a8a;
 --head:"Bricolage Grotesque","Helvetica Neue",Arial,sans-serif;--body:"Hanken Grotesk","Helvetica Neue",Arial,sans-serif;
@@ -43,6 +43,15 @@ h1{font:700 clamp(34px,6.5vw,76px)/1.02 var(--head);letter-spacing:-.04em;text-a
 .hero2 h1{font-size:clamp(46px,9vw,112px);margin:0 0 4px}
 .hero2 .sub{font-size:clamp(16px,2.4vw,22px);letter-spacing:.02em;color:#b9c0cd;margin:0}
 .hero2{height:calc(100svh - 67px - env(safe-area-inset-top,0px) - env(safe-area-inset-bottom,0px));min-height:520px;padding-bottom:20px}
+.hero2 h1.cat{font:800 clamp(30px,7.4vw,84px)/1.05 "Syne",var(--head);letter-spacing:.08em;text-transform:uppercase;background:none;color:transparent;-webkit-text-fill-color:transparent;-webkit-text-stroke:2px #fff;display:flex;justify-content:center;white-space:nowrap;position:relative;padding:.08em .1em;margin:0 0 8px;filter:drop-shadow(0 0 6px rgba(190,210,255,.55)) drop-shadow(0 0 18px rgba(120,160,255,.45));animation:catGlow 3.2s ease-in-out 2.4s infinite}
+.hero2 h1.cat span{display:inline-block;opacity:0;animation:catRise 1s cubic-bezier(.2,.8,.2,1) forwards;animation-delay:calc(var(--i)*.11s + .25s)}
+.hero2 h1.cat::after{content:"";position:absolute;inset:-10% -4%;background:linear-gradient(100deg,transparent 38%,rgba(255,255,255,.75) 50%,transparent 62%);-webkit-background-clip:text;mix-blend-mode:overlay;transform:translateX(-130%);animation:catSweep 1.5s ease 1.4s forwards;pointer-events:none}
+.hero2 h1.cat~.sub{opacity:0;animation:catSub .9s ease 1.35s forwards}
+@keyframes catRise{0%{opacity:0;transform:translateY(55%) scale(.92);filter:blur(12px)}60%{opacity:1;filter:blur(0)}100%{opacity:1;transform:none;filter:blur(0)}}
+@keyframes catSweep{to{transform:translateX(130%)}}
+@keyframes catSub{from{opacity:0;transform:translateY(10px)}to{opacity:1;transform:none}}
+@keyframes catGlow{0%,100%{filter:drop-shadow(0 0 6px rgba(190,210,255,.55)) drop-shadow(0 0 18px rgba(120,160,255,.45))}50%{filter:drop-shadow(0 0 9px rgba(210,225,255,.85)) drop-shadow(0 0 30px rgba(120,160,255,.7))}}
+@media (prefers-reduced-motion:reduce){.hero2 h1.cat span,.hero2 h1.cat~.sub{opacity:1;animation:none}.hero2 h1.cat,.hero2 h1.cat::after{animation:none}}
 .hero2 .cta{margin-top:22px}.hero2.has-img{justify-content:flex-start;padding-top:clamp(110px,27vh,300px);background-size:cover;background-position:center}
 .hero2.has-img .cta{background:linear-gradient(180deg,#fff,#dfe3ea);color:#0b0c10;box-shadow:0 14px 34px -8px rgba(0,0,0,.75),inset 0 1px 0 #fff}
 .hero2.has-img .cta:hover{background:#fff}.has-img .scene{display:none}.home footer{display:none}
@@ -152,7 +161,7 @@ function mq(o){const S="#c9ccd3",P=[],a=(d,f)=>P.push([d,f]);
  return`<g transform="translate(${o.x} 0) scale(${k} 1)" filter="url(#ds)">${P.map(p=>`<path d="${p[0]}" fill="${p[1]}"/>`).join("")}<clipPath id="c${o.x}">${P.slice(0,-1).map(p=>`<path d="${p[0]}"/>`).join("")}</clipPath><rect x="-100" y="0" width="200" height="540" fill="url(#sh)" clip-path="url(#c${o.x})"/></g>`}
 function home2(){
  const sc=HERO_IMG?"":`<svg viewBox="0 0 1210 560" preserveAspectRatio="xMidYMax meet" role="img" aria-label="Manichini con abiti del catalogo (immagine provvisoria)"><defs><linearGradient id="sh" x1="0" x2="1"><stop offset="0" stop-color="#fff" stop-opacity=".3"/><stop offset=".45" stop-color="#fff" stop-opacity="0"/><stop offset="1" stop-color="#000" stop-opacity=".55"/></linearGradient><linearGradient id="sp" x1="0" y1="0" x2="0" y2="1"><stop offset="0" stop-color="#fff" stop-opacity=".2"/><stop offset="1" stop-color="#fff" stop-opacity="0"/></linearGradient><radialGradient id="fl"><stop offset="0" stop-color="#fff" stop-opacity=".22"/><stop offset="1" stop-color="#fff" stop-opacity="0"/></radialGradient><filter id="ds" x="-30%" y="-10%" width="160%" height="130%"><feDropShadow dx="10" dy="12" stdDeviation="9" flood-opacity=".55"/></filter></defs><polygon points="540,0 670,0 1150,545 60,545" fill="url(#sp)"/><ellipse cx="605" cy="528" rx="620" ry="36" fill="url(#fl)"/>${MQ.map(mq).join("")}</svg>`;
- app.innerHTML=`<section class="hero2${HERO_IMG?" has-img":""}"${HERO_IMG?` style="background-image:radial-gradient(ellipse at center,rgba(5,6,8,.76) 0,rgba(5,6,8,.42) 55%,rgba(5,6,8,.66) 100%),url(${HERO_IMG})"`:""}><h1>Catalogo</h1><p class="sub">Vestiario, uomo e donna</p><a class="cta" href="#/cataloghi">Sfoglia il catalogo</a><div class="scene">${sc}</div></section>`;
+ app.innerHTML=`<section class="hero2${HERO_IMG?" has-img":""}"${HERO_IMG?` style="background-image:radial-gradient(ellipse at center,rgba(5,6,8,.76) 0,rgba(5,6,8,.42) 55%,rgba(5,6,8,.66) 100%),url(${HERO_IMG})"`:""}><h1 class="cat" aria-label="Catalogo">${[..."Catalogo"].map((c,i)=>`<span style="--i:${i}" aria-hidden="true">${c}</span>`).join("")}</h1><p class="sub">Vestiario, uomo e donna</p><a class="cta" href="#/cataloghi">Sfoglia il catalogo</a><div class="scene">${sc}</div></section>`;
  document.title="yasshop12 – Catalogo vestiario uomo e donna"}
 function cats(){app.innerHTML=`<section class="wrap"><h2 class="sec">I nostri cataloghi</h2>${tiles()}</section>`;document.title="Cataloghi – yasshop12"}
 const dd=(l,k,L)=>`<details class="dd"><summary class="chip${F[k]?" on":""}">${l}${F[k]?": "+F[k]:""} ▾</summary><div class="ddm">${L.map(v=>chip(k,v,F[k]===v)).join("")}</div></details>`;
