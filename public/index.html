@@ -72,16 +72,16 @@ h1{font:700 clamp(34px,6.5vw,76px)/1.02 var(--head);letter-spacing:-.04em;text-a
 .card{text-decoration:none}
 .card .im{aspect-ratio:4/5;border-radius:16px;overflow:hidden;background:var(--sf);position:relative;box-shadow:var(--sh);transition:transform .3s,box-shadow .3s}
 .card:hover .im{transform:translateY(-6px);box-shadow:0 30px 50px -12px rgba(59,108,255,.3),var(--sh)}
-.card img{width:100%;height:100%;object-fit:cover;display:block}
+.card img{width:100%;height:100%;object-fit:cover;display:block}.card .im.fit{background:#fff}.card .im.fit img{object-fit:contain}
 .tag{position:absolute;left:10px;top:10px;background:#000c;color:var(--no);font-size:12px;font-weight:600;padding:3px 9px;border-radius:999px}
 .card b{display:block;margin-top:12px;font-weight:600}.card small{color:var(--mut)}
 .dot{display:inline-block;width:10px;height:10px;border-radius:50%;margin-right:6px;border:1px solid #fff4}
 .empty{color:var(--mut);padding:30px 0}
 .pd{display:grid;grid-template-columns:1.1fr 1fr;gap:40px}
-.main{aspect-ratio:4/5;border-radius:20px;overflow:hidden;box-shadow:var(--sh);border:1px solid #2c3342}.main img{width:100%;height:100%;object-fit:cover;display:block}
+.main{aspect-ratio:4/5;border-radius:20px;overflow:hidden;box-shadow:var(--sh);border:1px solid #2c3342}.main{background:#fff}.main img{width:100%;height:100%;object-fit:contain;display:block}
 .th{display:grid;grid-template-columns:repeat(4,1fr);gap:10px;margin-top:12px}
 .th button{padding:0;border:2px solid transparent;border-radius:12px;overflow:hidden;aspect-ratio:1;background:var(--sf);opacity:.7}
-.th button[aria-pressed="true"]{border-color:var(--acl);opacity:1}.th img{width:100%;height:100%;object-fit:cover;display:block}
+.th button[aria-pressed="true"]{border-color:var(--acl);opacity:1}.th button{background:#fff}.th img{width:100%;height:100%;object-fit:contain;display:block}
 .info{display:flex;flex-direction:column;gap:14px}
 .info h1{font:700 clamp(28px,4vw,42px)/1.05 var(--head);letter-spacing:-.03em;margin:0;text-align:left;background:none;color:var(--ink);-webkit-text-fill-color:var(--ink)}
 .price{font:600 28px var(--head)}.ok{color:var(--ok);font-weight:600}.no{color:var(--no);font-weight:600}
@@ -121,7 +121,7 @@ const eur=n=>"€ "+n.toLocaleString("it-IT"),VIEW=["Fronte","Retro","Dettaglio"
 const ph=(p,v=0)=>{const c=SW[p.c[0]]||"#555";return"data:image/svg+xml;charset=utf-8,"+enc(`<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 400 500"><defs><linearGradient id="g" gradientTransform="rotate(${40+v*50} .5 .5)"><stop offset="0" stop-color="${c}"/><stop offset="1" stop-color="#07080b"/></linearGradient></defs><rect width="400" height="500" fill="url(#g)"/><text x="200" y="258" text-anchor="middle" font-family="Arial" font-size="24" fill="#fff" fill-opacity=".85">${p.t}</text><text x="200" y="292" text-anchor="middle" font-family="Arial" font-size="14" fill="#fff" fill-opacity=".55">${VIEW[v]} · foto in arrivo</text></svg>`)};
 const img=(p,v=0)=>(p.imgs&&p.imgs[v])||ph(p,v);
 let F={},SEL={},GI=0,REQ=false,NOTE="",TG="",MK=()=>"",cur=()=>{};
-const card=p=>`<a class="card" href="#/p/${p.id}"><div class="im"><img src="${img(p)}" alt="${p.n}" loading="lazy">${p.a===false?'<span class="tag">Non disponibile</span>':""}</div><b>${p.n}</b><small>${p.b}</small></a>`;
+const card=p=>`<a class="card" href="#/p/${p.id}"><div class="im${p.t==="Scarpe"?" fit":""}"><img src="${img(p)}" alt="${p.n}" loading="lazy">${p.a===false?'<span class="tag">Non disponibile</span>':""}</div><b>${p.n}</b><small>${p.b}</small></a>`;
 const chip=(k,v,on,l)=>`<button class="chip" data-f="${k}" data-v="${v}" aria-pressed="${on}">${l||v}</button>`;
 function lens(){return`<div class="lens"><svg viewBox="0 0 24 24" aria-hidden="true"><circle cx="11" cy="11" r="7"/><path d="M20 20l-4-4"/></svg><input class="si" data-s type="search" placeholder="Cerca un capo, una marca…" aria-label="Cerca nel catalogo" enterkeyhint="search"></div>`}
 const TILE={Giacche:"images/tile-giacche.jpg"}; // foto dei riquadri dei cataloghi (nome catalogo: immagine)
