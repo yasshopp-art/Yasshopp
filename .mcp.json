@@ -1,0 +1,8 @@
+{
+  "mcpServers": {
+    "21st-magic": {
+      "type": "http",
+      "url": "https://21st.dev/api/mcp"
+    }
+  }
+}
